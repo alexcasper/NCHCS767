@@ -1,0 +1,27 @@
+name: Node and Docs
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: deploy
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+        env: 
+          CANVAS_API: ${{ secrets.CANVAS_API }}
+      - run: 
+          echo CANVAS_API=$CANVAS_API >> .env  
+      - run: npm i
+      - run: npm start
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with: 
+          commit_message: autocommit docs
+          commit_user_name: auto
+      
