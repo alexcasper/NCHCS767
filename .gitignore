@@ -1,0 +1,4 @@
+.env
+pub/*
+package-lock.json
+node_modules/
