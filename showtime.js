@@ -20,7 +20,7 @@ function actionFile(filename, targetFilename) {
     fs.readFile(filename, { 'encoding': 'utf8' }, async (err, txt) => {
         if (err) { console.log(err); } else { 
             writeFile(targetFilename, await replaceEnv(txt,'GITHUB_VALUE_'))
-            let canvasTitle = targetFilename.split(['/']).slice(5,7).join('/').split('.')[0]
+            let canvasTitle = targetFilename.split(['/']).slice(5,7).join('-').split('.')[0]
             writeToCanvas(canvasTitle,converter.makeHtml(await replaceEnv(txt,'CANVAS_COURSE_')))
         }
     })
