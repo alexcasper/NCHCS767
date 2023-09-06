@@ -19,7 +19,7 @@ function actionFile(filename, targetFilename) {
     fs.readFile(filename, { 'encoding': 'utf8' }, async (err, txt) => {
         if (err) { console.log(err); } else { 
             writeFile(targetFilename, await replaceEnv(txt,'MARKDOWN_VALUE_'))
-            let canvasTitle = targetFilename.split(['/']).slice(5,7).join('-').split('.')[0]
+            let canvasTitle = targetFilename.slice(-8,-3).replace('/','-')
             writeToCanvas(canvasTitle,converter.makeHtml(await replaceEnv(txt,'CANVAS_COURSE_')))
         }
     })
@@ -69,7 +69,7 @@ function processFilesInFolder(folderName, sourceFolder, targetFolder) {
     })
 }
 
-async function writeToCanvas(title,text,) {
+async function writeToCanvas(title,text) {
     const PAGE_TARGET = process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/pages`
     let url = PAGE_TARGET+'/'+title
     console.log(url)
