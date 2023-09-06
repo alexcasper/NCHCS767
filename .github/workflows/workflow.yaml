@@ -4,12 +4,12 @@ on:
     branches: [ main ]
 jobs:
   build:
+    with: # Set the secret as an input
+      CANVAS_API: ${{ secrets.capi }}
     runs-on: ubuntu-latest
     environment: deploy
     permissions:
       contents: write
-    env:
-      CANVAS_API: ${{ secrets.capi }}
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 16.x
