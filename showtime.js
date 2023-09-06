@@ -1,8 +1,9 @@
 var showdown = require('showdown')
 var fs = require('fs')
 const fetch = require('node-fetch')
-
+const path = require('path')
 require('dotenv').config();
+
 const PAGE_TARGET = process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/pages`
 const MODULE_TARGET= process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/modules`
 const PAGES = "?per_page=30"
@@ -36,7 +37,7 @@ function writeFile(targetFilename, result) {
                 })
 }
 
-function runProcessOnRepo(sourceFolder = __dirname + '/src', targetFolder = __dirname + '/docs') {
+function runProcessOnRepo(sourceFolder = process.cwd() + '/src', targetFolder = process.cwd() + '/docs') {
     let folders = []
     fs.readdir(sourceFolder, (err, source) => {
         if (err) { console.log(err) }
