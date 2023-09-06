@@ -80,8 +80,8 @@ async function writeToCanvas(title,text) {
         method: "PUT",
         body: JSON.stringify({'wiki_page':{'title':title,'body':text}}),
         headers: { 'Content-Type': 'application/json',
-    'Authorization': 'Bearer '+key,
-    'Accept': 'application/json' }}
+                    'Authorization': 'Bearer '+key,
+                    'Accept': 'application/json' }}
     try {
         const response = await fetch(url,options);
         console.log(`${title} - ${response.status}`)
