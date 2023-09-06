@@ -80,6 +80,7 @@ async function writeToCanvas(title,text) {
         headers: { 'Content-Type': 'application/json',
     'Authorization': 'Bearer '+process.env.CANVAS_API,
     'Accept': 'application/json' }}
+    console.log(process.env.CANVAS_API.length())
     try {
         const response = await fetch(url,options);
         console.log(`${title} - ${response.status}`)
