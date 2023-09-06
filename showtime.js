@@ -106,7 +106,7 @@ async function writeModule(folder,url=MODULE_TARGET) {
 
 
 
-async function listModules(url=MODULE_TARGET) {
+async function listModules() {
     const MODULE_TARGET= process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/modules`
     const PAGES = "?per_page=30"
     const MODULES_TO_KEEP = [
