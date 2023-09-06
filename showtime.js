@@ -5,6 +5,7 @@ const fetch = require('node-fetch')
 require('dotenv').config();
 const PAGE_TARGET = process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/pages`
 const MODULE_TARGET= process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/modules`
+const PAGES = "?per_page=30"
 
 function replaceEnv(txt,varsToUse='CANVAS_COURSE_') {
     const PREFIX = '$'
@@ -53,7 +54,8 @@ function runProcessOnRepo(sourceFolder = __dirname + '/src', targetFolder = __di
 
 function processFolder(folderName, sourceFolder, targetFolder) {
     fs.exists(`${targetFolder}/${folderName}`, (exists) => exists ? processFilesInFolder(folderName, sourceFolder, targetFolder) : fs.mkdir(`${targetFolder}/${folderName}`, (err, res) => processFilesInFolder(folderName, sourceFolder, targetFolder)))
-    writeModule(folderName)
+    //look into this later. it was just creating loads of useless blank modules.
+    //writeModule(folderName)
 }
 
 
@@ -64,13 +66,12 @@ function processFilesInFolder(folderName, sourceFolder, targetFolder) {
             for (let file of content) {
                 let filePrefix = file.split('.')[0]
                 actionFile(`${sourceFolder}/${folderName}/${file}`, `${targetFolder}/${folderName}/${filePrefix}.md`,targetFolder)
-            
             }
         }
     })
 }
 
-function writeToCanvas(title,text,url=PAGE_TARGET) {
+async function writeToCanvas(title,text,url=PAGE_TARGET) {
     const options = {
         method: "PUT",
         body: JSON.stringify({'wiki_page':{'title':title,'body':text}}),
@@ -78,7 +79,8 @@ function writeToCanvas(title,text,url=PAGE_TARGET) {
     'Authorization': 'Bearer '+process.env.CANVAS_API,
     'Accept': 'application/json' }}
     try {
-        fetch(url+'/'+title,options);
+        const response = await fetch(url+'/'+title,options);
+        console.log(`${title} - ${response.status}`)
     }
     catch (e)
     {console.log(e)}
@@ -87,13 +89,14 @@ function writeToCanvas(title,text,url=PAGE_TARGET) {
 
 async function writeModule(folder,url=MODULE_TARGET) {
     const options = {
-        method: "POST",
-        body: JSON.stringify({'module':{'name':folder}}),
+        method: "PUT",
+        body: JSON.stringify({'module':{'name':folder,'position':parseInt(folder)||0}}),
         headers: { 'Content-Type': 'application/json',
     'Authorization': 'Bearer '+process.env.CANVAS_API,
     'Accept': 'application/json' }}
     try {
         const response = await fetch(url,options);
+        console.log(`${folder} - ${response.status}`)
     }
     catch (e)
     {console.log(e)}
@@ -101,8 +104,55 @@ async function writeModule(folder,url=MODULE_TARGET) {
 
 
 
+async function listModules(url=MODULE_TARGET) {
+    const MODULES_TO_KEEP = [
+        35910,
+        39059,
+        39061,
+        39065,
+        39062,
+        39064,
+        39066,
+        39069,
+        39060,
+        39063,
+        39067,
+        39068
+    ]
+    const options = {
+        method: "GET",
+        headers: { 'Content-Type': 'application/json',
+    'Authorization': 'Bearer '+process.env.CANVAS_API,
+    'Accept': 'application/json' }}
+    try {
+        const response = await fetch(url+PAGES,options);
+        console.log(`list ${response.status}`)
+        response.json().then(x=> x.map((y)=>y['id']).filter((z) => !MODULES_TO_KEEP.includes(z) ).forEach(element => deleteModule(element)))
+    }
+    catch (e)
+    {console.log(e)}
+}
+
+async function deleteModule(moduleId,url=MODULE_TARGET){
+    const options = {
+        method: "DELETE",
+        headers: { 'Content-Type': 'application/json',
+    'Authorization': 'Bearer '+process.env.CANVAS_API,
+    'Accept': 'application/json' }}
+    try {
+        const response = await fetch(`${url}/${moduleId}`,options);
+        console.log(`delete ${moduleId} ${response.status}`)
+    }
+    catch (e)
+    {console.log(e)}
+}
+
+
+
+
 function action() {
     runProcessOnRepo()
+    //listModules()
 }
 
 
