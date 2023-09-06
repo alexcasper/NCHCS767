@@ -8,8 +8,7 @@ jobs:
     environment: deploy
     permissions:
       contents: write
-      environments: read
-    secrets:
+    env:
       CANVAS_API: ${{ secrets.capi }}
     steps:
       - uses: actions/checkout@v3
