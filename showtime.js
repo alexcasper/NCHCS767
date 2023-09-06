@@ -21,7 +21,7 @@ function actionFile(filename, filePrefix, targetFolders) {
             let mdTitle = targetFolders[0]+'/'+filePrefix+'.md'
             writeFile(mdTitle, await replaceEnv(txt,'MARKDOWN_VALUE_'))
             let pagesTitle = targetFolders[1]+'/'+filePrefix+'.html'
-            writeFile(pagesTitle, await replaceEnv(converter.makeHtml(await replaceEnv(txt,'PAGES_VALUE_'))))
+            writeFile(pagesTitle, await replaceEnv("<!DOCTYPE html>"+converter.makeHtml(await replaceEnv(txt,'PAGES_VALUE_'))))
             let canvasTitle = filePrefix.replace('/','-')
             writeToCanvas(canvasTitle,converter.makeHtml(await replaceEnv(txt,'CANVAS_COURSE_')))
         }
