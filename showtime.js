@@ -1,7 +1,6 @@
 var showdown = require('showdown')
 var fs = require('fs')
 const fetch = require('node-fetch')
-const path = require('path')
 require('dotenv').config();
 
 
