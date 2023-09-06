@@ -51,6 +51,7 @@ function runProcessOnRepo(sourceFolder = process.cwd() + '/src', targetFolder = 
 }
 
 function processFolder(folderName, sourceFolder, targetFolder) {
+    fs.mkdirSync(`${targetFolder}`)
     fs.exists(`${targetFolder}/${folderName}`, (exists) => exists ? processFilesInFolder(folderName, sourceFolder, targetFolder) : fs.mkdir(`${targetFolder}/${folderName}`, (err, res) => processFilesInFolder(folderName, sourceFolder, targetFolder)))
     //look into this later. it was just creating loads of useless blank modules.
     //writeModule(folderName)
