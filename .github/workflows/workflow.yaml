@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: deploy
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 16.x
@@ -55,7 +58,7 @@ jobs:
           MARKDOWN_VALUE_W03: Thursday October 12th 2023
           MARKDOWN_VALUE_W04: Thursday October 19th 2023
           MARKDOWN_VALUE_W05: Thursday November 2nd 2023
-          MRKDOWN_VALUE_W06: Thursday November 9th 2023
+          MARKDOWN_VALUE_W06: Thursday November 9th 2023
           MARKDOWN_VALUE_W07: Thursday November 16th 2023
           MARKDOWN_VALUE_W08: Thursday November 30th 2023
           MARKDOWN_VALUE_W09: Thursday December 7th 2023
@@ -72,13 +75,8 @@ jobs:
           MARKDOWN_VALUE_S10: /10.md
       - run: npm i
       - run: npm start
-  commit-docs:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v3
       - uses: stefanzweifel/git-auto-commit-action@v4
         with: 
           commit_message: autocommit docs
           commit_user_name: auto
+      
