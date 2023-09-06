@@ -10,6 +10,7 @@ Northeastern London NCHCS767
 
 ## Syllabus
 ### Session 01
+#### Scaling
 Thursday September 28th 2023
 
 #### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/01/01.md)
@@ -21,6 +22,7 @@ Thursday September 28th 2023
 #### [Workshop Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/01/04.md)
 
 ### Session 02
+#### Consistency and Concurrency
 Thursday October 5th 2023
 
 #### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/02/01.md)
@@ -32,6 +34,7 @@ Thursday October 5th 2023
 #### [Workshop Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/02/04.md)
 
 ### Session 03
+#### Distributed Processing
 Thursday October 12th 2023
 #### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/03/01.md)
 
@@ -43,6 +46,7 @@ Thursday October 12th 2023
 
 ### Session 04
 Thursday October 19th 2023
+#### Caching
 
 #### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/04/01.md)
 
@@ -54,6 +58,7 @@ Thursday October 19th 2023
 
 ### Session 05
 Thursday November 2nd 2023
+#### Messaging
 
 #### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/05/01.md)
 
@@ -65,6 +70,7 @@ Thursday November 2nd 2023
 
 ### Session 06
 Thursday November 9th 2023
+#### Messaging
 
 #### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/06/01.md)
 
@@ -76,6 +82,7 @@ Thursday November 9th 2023
 
 ### Session 07
 Thursday November 16th 2023
+#### NoSQL Databases
 
 #### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/07/01.md)
 
@@ -87,6 +94,7 @@ Thursday November 16th 2023
 
 ### Session 08
 Thursday November 30th 2023
+#### Kubernetes
 
 #### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/08/01.md)
 
@@ -98,6 +106,7 @@ Thursday November 30th 2023
 
 ### Session 09
 Thursday December 7th 2023
+#### Data Streaming
 
 #### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/09/01.md)
 
@@ -109,6 +118,7 @@ Thursday December 7th 2023
 
 ### Session 10
 Thursday December 14th 2023
+#### Data Stream Processing
 
 #### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/10/01.md)
 
