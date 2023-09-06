@@ -1,129 +1,129 @@
 
 ---
 
-# $CN
-Northeastern London $NUID
+# Building Scalable Distributed Systems
+Northeastern London NCHCS767
 
-[Canvas Course $ID]($URL)
+[Canvas Course 2812](https://alexcasper.github.io/NCHCS767/)
 
 ---
 
 ## Syllabus
 ### Session 01
 #### Scaling
-$W01
+Thursday September 28th 2023
 
-#### [Seminar Notes]($UP/01$S01)
+#### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/01/01.md)
 
-#### [Seminar Reading]($UP/01$S02)
+#### [Seminar Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/01/02.md)
 
-#### [Workshop Notes]($UP/01$S03)
+#### [Workshop Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/01/03.md)
 
-#### [Workshop Reading]($UP/01$S04)
+#### [Workshop Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/01/04.md)
 
 ### Session 02
 #### Consistency and Concurrency
-$W02
+Thursday October 5th 2023
 
-#### [Seminar Notes]($UP/02$S01)
+#### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/02/01.md)
 
-#### [Seminar Reading]($UP/02$S02)
+#### [Seminar Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/02/02.md)
 
-#### [Workshop Notes]($UP/02$S03)
+#### [Workshop Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/02/03.md)
 
-#### [Workshop Reading]($UP/02$S04)
+#### [Workshop Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/02/04.md)
 
 ### Session 03
 #### Distributed Processing
-$W03
-#### [Seminar Notes]($UP/03$S01)
+Thursday October 12th 2023
+#### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/03/01.md)
 
-#### [Seminar Reading]($UP/03$S02)
+#### [Seminar Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/03/02.md)
 
-#### [Workshop Notes]($UP/03$S03)
+#### [Workshop Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/03/03.md)
 
-#### [Workshop Reading]($UP/03$S04)
+#### [Workshop Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/03/04.md)
 
 ### Session 04
-$W04
+Thursday October 19th 2023
 #### Caching
 
-#### [Seminar Notes]($UP/04$S01)
+#### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/04/01.md)
 
-#### [Seminar Reading]($UP/04$S02)
+#### [Seminar Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/04/02.md)
 
-#### [Workshop Notes]($UP/04$S03)
+#### [Workshop Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/04/03.md)
 
-#### [Workshop Reading]($UP/04$S04)
+#### [Workshop Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/04/04.md)
 
 ### Session 05
-$W05
+Thursday November 2nd 2023
 #### Messaging
 
-#### [Seminar Notes]($UP/05$S01)
+#### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/05/01.md)
 
-#### [Seminar Reading]($UP/05$S02)
+#### [Seminar Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/05/02.md)
 
-#### [Workshop Notes]($UP/05$S03)
+#### [Workshop Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/05/03.md)
 
-#### [Workshop Reading]($UP/05$S04)
+#### [Workshop Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/05/04.md)
 
 ### Session 06
-$W06
+Thursday November 9th 2023
 #### Messaging
 
-#### [Seminar Notes]($UP/06$S01)
+#### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/06/01.md)
 
-#### [Seminar Reading]($UP/06$S02)
+#### [Seminar Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/06/02.md)
 
-#### [Workshop Notes]($UP/06$S03)
+#### [Workshop Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/06/03.md)
 
-#### [Workshop Reading]($UP/06$S04)
+#### [Workshop Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/06/04.md)
 
 ### Session 07
-$W07
+Thursday November 16th 2023
 #### NoSQL Databases
 
-#### [Seminar Notes]($UP/07$S01)
+#### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/07/01.md)
 
-#### [Seminar Reading]($UP/07$S02)
+#### [Seminar Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/07/02.md)
 
-#### [Workshop Notes]($UP/07$S03)
+#### [Workshop Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/07/03.md)
 
-#### [Workshop Reading]($UP/07$S04)
+#### [Workshop Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/07/04.md)
 
 ### Session 08
-$W08
+Thursday November 30th 2023
 #### Kubernetes
 
-#### [Seminar Notes]($UP/08$S01)
+#### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/08/01.md)
 
-#### [Seminar Reading]($UP/08$S02)
+#### [Seminar Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/08/02.md)
 
-#### [Workshop Notes]($UP/08$S03)
+#### [Workshop Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/08/03.md)
 
-#### [Workshop Reading]($UP/08$S04)
+#### [Workshop Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/08/04.md)
 
 ### Session 09
-$W09
+Thursday December 7th 2023
 #### Data Streaming
 
-#### [Seminar Notes]($UP/09$S01)
+#### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/09/01.md)
 
-#### [Seminar Reading]($UP/09$S02)
+#### [Seminar Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/09/02.md)
 
-#### [Workshop Notes]($UP/09$S03)
+#### [Workshop Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/09/03.md)
 
-#### [Workshop Reading]($UP/09$S04)
+#### [Workshop Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/09/04.md)
 
 ### Session 10
-$W10
+Thursday December 14th 2023
 #### Data Stream Processing
 
-#### [Seminar Notes]($UP/10$S01)
+#### [Seminar Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/10/01.md)
 
-#### [Seminar Reading]($UP/10$S02)
+#### [Seminar Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/10/02.md)
 
-#### [Workshop Notes]($UP/10$S03)
+#### [Workshop Notes](https://github.com/alexcasper/NCHCS767/blob/main/docs/10/03.md)
 
-#### [Workshop Reading]($UP/10$S04)
+#### [Workshop Reading](https://github.com/alexcasper/NCHCS767/blob/main/docs/10/04.md)
