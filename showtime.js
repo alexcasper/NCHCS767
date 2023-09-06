@@ -74,8 +74,8 @@ async function writeToCanvas(title,text) {
     const PAGE_TARGET = process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/pages`
     let url = PAGE_TARGET+'/'+title
     console.log(url)
-    let key = await process.env.CANVAS_API
-    console.log(key.length())
+    let key = process.env.CANVAS_API
+    console.log(typeof key)
     const options = {
         method: "PUT",
         body: JSON.stringify({'wiki_page':{'title':title,'body':text}}),
