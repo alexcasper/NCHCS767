@@ -36,6 +36,7 @@ function writeFile(targetFilename, result) {
 
 function runProcessOnRepo(sourceFolder = process.cwd() + '/src', targetFolder = process.cwd() + '/docs') {
     let folders = []
+    fs.exists(`${targetFolder}`,(exists)=>exists?true:fs.mkdirSync(`${targetFolder}`))
     fs.readdir(sourceFolder, (err, source) => {
         if (err) { console.log(err) }
         for (let sourceItem of source) {
@@ -51,7 +52,6 @@ function runProcessOnRepo(sourceFolder = process.cwd() + '/src', targetFolder = 
 }
 
 function processFolder(folderName, sourceFolder, targetFolder) {
-    fs.mkdirSync(`${targetFolder}`)
     fs.exists(`${targetFolder}/${folderName}`, (exists) => exists ? processFilesInFolder(folderName, sourceFolder, targetFolder) : fs.mkdir(`${targetFolder}/${folderName}`, (err, res) => processFilesInFolder(folderName, sourceFolder, targetFolder)))
     //look into this later. it was just creating loads of useless blank modules.
     //writeModule(folderName)
