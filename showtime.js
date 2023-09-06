@@ -4,9 +4,7 @@ const fetch = require('node-fetch')
 const path = require('path')
 require('dotenv').config();
 
-const PAGE_TARGET = process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/pages`
-const MODULE_TARGET= process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/modules`
-const PAGES = "?per_page=30"
+
 
 function replaceEnv(txt,varsToUse='CANVAS_COURSE_') {
     const PREFIX = '$'
@@ -72,7 +70,10 @@ function processFilesInFolder(folderName, sourceFolder, targetFolder) {
     })
 }
 
-async function writeToCanvas(title,text,url=PAGE_TARGET) {
+async function writeToCanvas(title,text,) {
+    const PAGE_TARGET = process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/pages`
+    let url = PAGE_TARGET+'/'+title
+    console.log(url)
     const options = {
         method: "PUT",
         body: JSON.stringify({'wiki_page':{'title':title,'body':text}}),
@@ -80,7 +81,7 @@ async function writeToCanvas(title,text,url=PAGE_TARGET) {
     'Authorization': 'Bearer '+process.env.CANVAS_API,
     'Accept': 'application/json' }}
     try {
-        const response = await fetch(url+'/'+title,options);
+        const response = await fetch(url,options);
         console.log(`${title} - ${response.status}`)
     }
     catch (e)
@@ -106,6 +107,8 @@ async function writeModule(folder,url=MODULE_TARGET) {
 
 
 async function listModules(url=MODULE_TARGET) {
+    const MODULE_TARGET= process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/modules`
+    const PAGES = "?per_page=30"
     const MODULES_TO_KEEP = [
         35910,
         39059,
@@ -120,6 +123,7 @@ async function listModules(url=MODULE_TARGET) {
         39067,
         39068
     ]
+    let url = MODULE_TARGET
     const options = {
         method: "GET",
         headers: { 'Content-Type': 'application/json',
@@ -134,14 +138,16 @@ async function listModules(url=MODULE_TARGET) {
     {console.log(e)}
 }
 
-async function deleteModule(moduleId,url=MODULE_TARGET){
+async function deleteModule(moduleId){
+    const MODULE_TARGET= process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/modules`
+    let url = MODULE_TARGET + '/' + moduleId
     const options = {
         method: "DELETE",
         headers: { 'Content-Type': 'application/json',
     'Authorization': 'Bearer '+process.env.CANVAS_API,
     'Accept': 'application/json' }}
     try {
-        const response = await fetch(`${url}/${moduleId}`,options);
+        const response = await fetch(url,options);
         console.log(`delete ${moduleId} ${response.status}`)
     }
     catch (e)
@@ -153,7 +159,6 @@ async function deleteModule(moduleId,url=MODULE_TARGET){
 
 function action() {
     runProcessOnRepo()
-    //listModules()
 }
 
 
