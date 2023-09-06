@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 16.x
         env: 
-          CANVAS_API=${{ secrets.CANVAS_API }}
+          CANVAS_API: ${{ secrets.CANVAS_API }}
       - run: 
           echo CANVAS_API=$CANVAS_API >> .env  
       - run: npm i
