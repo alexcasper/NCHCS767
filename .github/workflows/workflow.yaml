@@ -4,20 +4,20 @@ on:
     branches: [ main ]
 jobs:
   build:
-    with: # Set the secret as an input
-      CANVAS_API: ${{ secrets.capi }}
+  
     runs-on: ubuntu-latest
-    environment: deploy
     permissions:
       contents: write
+    env:
+      CAPI: ${{ secrets.capi }}
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x    
+          node-version: 16.x            
       - run: 
-          echo CANVAS_API=$CANVAS_API >> .env  
+          echo CANVAS_API="$CAPI" >> .env  
       - run: npm i
       - run: npm start
       - run: head -n -1 .env > safe.env
