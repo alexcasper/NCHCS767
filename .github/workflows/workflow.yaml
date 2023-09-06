@@ -20,6 +20,7 @@ jobs:
           echo CANVAS_API=$CANVAS_API >> .env  
       - run: npm i
       - run: npm start
+      - run: rm .env
       - uses: stefanzweifel/git-auto-commit-action@v4
         with: 
           commit_message: autocommit docs
