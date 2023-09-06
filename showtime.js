@@ -23,8 +23,7 @@ function actionFile(filename, filePrefix, targetFolders) {
             let pagesTitle = targetFolders[1]+'/'+filePrefix+'.html'
             writeFile(pagesTitle, await replaceEnv(converter.makeHtml(await replaceEnv(txt,'PAGES_VALUE_'))))
             let canvasTitle = filePrefix.replace('/','-')
-            console.log(mdTitle,pagesTitle,canvasTitle)
-           // writeToCanvas(canvasTitle,converter.makeHtml(await replaceEnv(txt,'CANVAS_COURSE_')))
+            writeToCanvas(canvasTitle,converter.makeHtml(await replaceEnv(txt,'CANVAS_COURSE_')))
         }
     })
 
