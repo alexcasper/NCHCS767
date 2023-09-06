@@ -7,9 +7,8 @@ const PAGE_TARGET = process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVA
 const MODULE_TARGET= process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/modules`
 
 function replaceEnv(txt,varsToUse='CANVAS_COURSE_') {
-    
     const PREFIX = '$'
-    const CC = Object.keys(process.env).filter(x => x.startsWith(varsToUse)).map(x => [PREFIX + x.replace('CANVAS_COURSE_', ''), process.env[x]])
+    const CC = Object.keys(process.env).filter(x => x.startsWith(varsToUse)).map(x => [PREFIX + x.replace(varsToUse, ''), process.env[x]])
     for (let item of CC) {
         txt =txt.replaceAll(item[0], item[1])
     }
@@ -18,10 +17,11 @@ function replaceEnv(txt,varsToUse='CANVAS_COURSE_') {
 
 function actionFile(filename, targetFilename) {
     converter = new showdown.Converter()
-    fs.readFile(filename, { 'encoding': 'utf8' }, (err, txt) => {
-        if (err) { console.log(err); } else {
-            resultForCanvas = 
-            writeFile(targetFilename, converter.makeHtml(replaceEnv(txt,'GITHUB_VALUE_')))
+    fs.readFile(filename, { 'encoding': 'utf8' }, async (err, txt) => {
+        if (err) { console.log(err); } else { 
+            let markdownVersion = await replaceEnv(txt,'GITHUB_VALUE_')
+            console.log(markdownVersion)
+            writeFile(targetFilename,  markdownVersion)
             let canvasTitle = targetFilename.split(['/']).slice(5,7).join('_').split('.')[0]
             writeToCanvas(canvasTitle,converter.makeHtml(replaceEnv(txt,'CANVAS_COURSE_')))
         }
@@ -65,7 +65,7 @@ function processFilesInFolder(folderName, sourceFolder, targetFolder) {
         else {
             for (let file of content) {
                 let filePrefix = file.split('.')[0]
-                actionFile(`${sourceFolder}/${folderName}/${file}`, `${targetFolder}/${folderName}/${filePrefix}.html`,targetFolder)
+                actionFile(`${sourceFolder}/${folderName}/${file}`, `${targetFolder}/${folderName}/${filePrefix}.md`,targetFolder)
             
             }
         }
@@ -94,10 +94,8 @@ async function writeModule(folder,url=MODULE_TARGET) {
         headers: { 'Content-Type': 'application/json',
     'Authorization': 'Bearer '+process.env.CANVAS_API,
     'Accept': 'application/json' }}
-    console.log(options)
     try {
         const response = await fetch(url,options);
-        console.log(await response.status);
     }
     catch (e)
     {console.log(e)}
