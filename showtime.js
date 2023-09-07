@@ -1,5 +1,6 @@
 var showdown = require('showdown')
 var fs = require('fs')
+var showdownmermaid = require('./custom_modules/showdownmermaid')
 const fetch = require('node-fetch')
 require('dotenv').config();
 
@@ -15,7 +16,8 @@ function replaceEnv(txt,varsToUse='CANVAS_COURSE_') {
 }
 
 function actionFile(filename, filePrefix, targetFolders) {
-    converter = new showdown.Converter()
+    
+    converter = new showdown.Converter({ extensions: [showdownmermaid] })
     fs.readFile(filename, { 'encoding': 'utf8' }, async (err, txt) => {
         if (err) { console.log(err); } else { 
             let mdTitle = targetFolders[0]+'/'+filePrefix+'.md'
@@ -23,7 +25,9 @@ function actionFile(filename, filePrefix, targetFolders) {
             let pagesTitle = targetFolders[1]+'/'+filePrefix+'.html'
             writeFile(pagesTitle, await replaceEnv("<!DOCTYPE html>"+converter.makeHtml(await replaceEnv(txt,'PAGES_VALUE_'))))
             let canvasTitle = filePrefix.replace('/','-')
-            writeToCanvas(canvasTitle,converter.makeHtml(await replaceEnv(txt,'CANVAS_COURSE_')))
+            if (process.env.CANVAS_API) {
+                writeToCanvas(canvasTitle,converter.makeHtml(await replaceEnv(txt,'CANVAS_COURSE_')))
+            }
         }
     })
 
