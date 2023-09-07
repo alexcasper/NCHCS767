@@ -1,6 +1,7 @@
 var showdown = require('showdown')
 var fs = require('fs')
-var showdownmermaid = require('./custom_modules/showdownmermaid')
+var mermaid = require('./custom_modules/showdown-mermaid')
+var reveal = require('./custom_modules/showdown-reveal')
 const fetch = require('node-fetch')
 require('dotenv').config();
 
@@ -15,9 +16,9 @@ function replaceEnv(txt,varsToUse='CANVAS_COURSE_') {
     return txt
 }
 
-function actionFile(filename, filePrefix, targetFolders) {
+function actionMDFile(filename, filePrefix, targetFolders) {
     
-    converter = new showdown.Converter({ extensions: [showdownmermaid] })
+    converter = new showdown.Converter({ extensions: [reveal,mermaid] })
     fs.readFile(filename, { 'encoding': 'utf8' }, async (err, txt) => {
         if (err) { console.log(err); } else { 
             let mdTitle = targetFolders[0]+'/'+filePrefix+'.md'
@@ -75,7 +76,7 @@ function processFilesInFolders(folderName, sourceFolder, targetFolders) {
         else {
             for (let file of content) {
                 file = file.split('.')[0]
-                actionFile(`${sourceFolder}/${folderName}/${file}.md`,folderName+'/'+file,targetFolders)
+                actionMDFile(`${sourceFolder}/${folderName}/${file}.md`,folderName+'/'+file,targetFolders)
             }
         }
     })
