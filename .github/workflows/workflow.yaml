@@ -23,10 +23,13 @@ jobs:
       - run: mv safe.env .env
       - run: cp docs/00/00.md docs/00/syllabus.md
       - run: cp pages/00/00.html pages/index.html
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with: 
-          commit_message: autocommit docs
-          commit_user_name: auto
+          node-version: 16.x
+        env: 
+          CANVAS_API: ${{ secrets.CANVAS_API }}
+      - run: 
+          echo CANVAS_API=$CANVAS_API >> .env  
+      - run: npm i
+      - run: npm start
   pages:
     needs: build
     name: Deploy static content to Pages
@@ -51,4 +54,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-       

@@ -1,5 +1,6 @@
 var showdown = require('showdown')
 var fs = require('fs')
+
 var showdownmermaid = require('./custom_modules/showdownmermaid')
 const fetch = require('node-fetch')
 require('dotenv').config();
@@ -14,6 +15,7 @@ function replaceEnv(txt,varsToUse='CANVAS_COURSE_') {
     }
     return txt
 }
+
 
 function actionFile(filename, filePrefix, targetFolders) {
     
@@ -42,6 +44,7 @@ function writeFile(targetFilename, result) {
 }
 
 function runProcessOnRepo(sourceFolder = process.cwd() + '/src', targetFolders= [process.cwd() + '/docs', process.cwd() + '/pages']) {
+
     let folders = []
     for (let targetFolder of targetFolders) {
     fs.exists(`${targetFolder}`,(exists)=>exists?true:fs.mkdirSync(`${targetFolder}`))
@@ -64,8 +67,6 @@ function processFolders(folderName, sourceFolder, targetFolders) {
     fs.exists(`${targetFolder}/${folderName}`, (exists) => exists ? true : fs.mkdir(`${targetFolder}/${folderName}`, (err, res) => true))
     }
     processFilesInFolders(folderName, sourceFolder, targetFolders)
-    //look into this later. it was just creating loads of useless blank modules.
-    //writeModule(folderName)
 }
 
 
@@ -74,6 +75,7 @@ function processFilesInFolders(folderName, sourceFolder, targetFolders) {
         if (err) { console.log(err) }
         else {
             for (let file of content) {
+
                 file = file.split('.')[0]
                 actionFile(`${sourceFolder}/${folderName}/${file}.md`,folderName+'/'+file,targetFolders)
             }
@@ -87,6 +89,7 @@ async function writeToCanvas(title,text) {
     console.log(url)
     let key = process.env.CANVAS_API
     console.log(typeof key)
+
     const options = {
         method: "PUT",
         body: JSON.stringify({'wiki_page':{'title':title,'body':text}}),
@@ -122,6 +125,7 @@ async function writeModule(folder,url=MODULE_TARGET) {
 async function listModules() {
     const MODULE_TARGET= process.env.CANVAS_BASE+`/api/v1/courses/${process.env.CANVAS_COURSE_ID}/modules`
     const PAGES = "?per_page=30"
+
     let url = MODULE_TARGET
     const options = {
         method: "GET",
@@ -130,7 +134,6 @@ async function listModules() {
     'Accept': 'application/json' }}
     try {
         const response = await fetch(url+PAGES,options);
-        //console.log(`list ${response.status}`)
         response.json().then(x=> x.map((y)=>y['id']).filter((z) => !MODULES_TO_KEEP.includes(z) ).forEach(element => deleteModule(element)))
     }
     catch (e)
