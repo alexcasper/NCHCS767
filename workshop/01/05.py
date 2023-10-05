@@ -1,6 +1,8 @@
 from http.server import HTTPServer,SimpleHTTPRequestHandler
 import random
 
+
+
 class ServerHandler(SimpleHTTPRequestHandler):    
     def do_GET(self):
         self.send_response(200, 'OK')
