@@ -1,7 +1,6 @@
 from threading import Thread, local
 from time import sleep
 
-
 def list_generate(character):
     my_data = local()
     my_data.list = []
@@ -10,7 +9,7 @@ def list_generate(character):
         while len(my_data.list)>0:
             item = my_data.list.pop()
             print(item)
-        sleep(1)
+        
     
 
 

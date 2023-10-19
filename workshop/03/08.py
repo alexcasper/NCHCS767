@@ -15,7 +15,7 @@ def list_generate(character):
     
 
 threads = {}
-for i in range(97,123):
+for i in range(65,91):
     print(chr(i))
     letter = chr(i)
     threads[letter] = Thread(target = list_generate, args=[letter])

@@ -5,9 +5,9 @@ import os
 
 lock = Lock()
 fps=5
-number_of_snails = 5
+number_of_snails = 3
 threads = {}
-race_length = 20
+race_length = 10
 snail_positions = {}
 screen = ""
 
@@ -33,7 +33,6 @@ def display_snails():
        print(screenframe)
        lock.release()
        sleep(1/fps)
-       
     winner = [snail_position[0] for snail_position in snail_positions.items() if snail_position[1]==race_length][0]
     print(f'The winner is snail {winner}')
 
