@@ -2,8 +2,9 @@ from multiprocessing import Process, get_start_method
 from random import randrange
 from time import sleep, time
 
-def f(name,thread_number):
-    print(''.join(['hi', name, f'thread_number: {thread_number}']))
+def f(thread_number):
+    name = create_name()
+    print(''.join(['hi | ', name, f' | thread_number: {thread_number}']))
 
 def create_name():
     time_taken = 1 + randrange(1,10)/10
@@ -17,9 +18,8 @@ if __name__ == '__main__':
     print (get_start_method())
     processes = []
     a = time()
-    for i in range(10):
-      name = create_name()
-      processes.append(Process(target=f, args=(name,i)))
+    for i in range(100):
+      processes.append(Process(target=f, args=[i]))
     for p in processes:
       p.start()
     for j in processes:
