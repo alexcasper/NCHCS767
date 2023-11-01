@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-# https://www.rabbitmq.com/tutorials/tutorial-one-python.html
-# Recieve script for Tutorial 1
+# https://www.rabbitmq.com/tutorials/tutorial-two-python.html
+# Receive script for Tutorial 2
 
 import pika
 import sys
